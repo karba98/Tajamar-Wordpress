@@ -1,0 +1,48 @@
+﻿@*@model IEnumerable<MVCCoreLimpio.Models.Producto>*@
+@model IPagedList<Producto>
+
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h1>Productos</h1>
+
+@Html.PagedListPager(Model, page =>
+    Url.Action("Productos", new { page }), new PagedListRenderOptions{
+        Display = X.PagedList.Web.Common.PagedListDisplayMode.IfNeeded,
+        DisplayLinkToIndividualPages = true,
+        DisplayPageCountAndCurrentLocation = true,
+        MaximumPageNumbersToDisplay = 15,
+        //ESTILOS
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    })
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Producto
+            </th>
+            <th>
+                Precio
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)€
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

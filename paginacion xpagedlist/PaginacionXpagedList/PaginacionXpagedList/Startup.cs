@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace MVCCoreLimpio
+namespace PaginacionXpagedList
 {
     public class Startup
     {
@@ -49,7 +49,7 @@ namespace MVCCoreLimpio
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{controller=Home}/{action=Productos}/{id?}"
                 );
             });
         }
