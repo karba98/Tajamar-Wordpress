@@ -14,7 +14,7 @@ namespace PaginacionXpagedList.Controllers
         {
             return View();
         }
-        public IActionResult Productos(int?page)
+        public IActionResult Productos(int? page)
         {
             //creo una lista con un for de productos
             List<Producto> products = new List<Producto>();
@@ -42,8 +42,8 @@ namespace PaginacionXpagedList.Controllers
                 };
                 products.Add(productodeHorno);
             }
-            //return View(products);
-            return View(products.ToPagedList(page ?? 1, 10));
+            return View(products.ToPagedList(page ?? 1,10));
+            
         }
     }
 }

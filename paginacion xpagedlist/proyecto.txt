@@ -1,0 +1,21 @@
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Mvc.Core.Common;
+
+@model IPagedList<Producto>
+
+@Html.PagedListPager(Model, page =>
+    Url.Action("Productos", new { page }), new PagedListRenderOptions{
+        Display = X.PagedList.Web.Common.PagedListDisplayMode.IfNeeded,
+        DisplayLinkToIndividualPages = true,
+        DisplayPageCountAndCurrentLocation = true,
+        MaximumPageNumbersToDisplay = 15,
+        //ESTILOS
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    })
+
+
+-------------------------------------------------------------------------
+int?page
+return View(products.ToPagedList(page ?? 1, 10));

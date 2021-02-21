@@ -1,5 +1,6 @@
-﻿@*@model IEnumerable<MVCCoreLimpio.Models.Producto>*@
+﻿@*@model IEnumerable<PaginacionXpagedList.Models.Producto>*@
 @model IPagedList<Producto>
+
 
 
 @{
@@ -8,16 +9,13 @@
 
 <h1>Productos</h1>
 
-@Html.PagedListPager(Model, page =>
-    Url.Action("Productos", new { page }), new PagedListRenderOptions{
-        Display = X.PagedList.Web.Common.PagedListDisplayMode.IfNeeded,
-        DisplayLinkToIndividualPages = true,
-        DisplayPageCountAndCurrentLocation = true,
-        MaximumPageNumbersToDisplay = 15,
-        //ESTILOS
-        LiElementClasses = new string[] { "page-item" },
-        PageClasses = new string[] { "page-link" }
-    })
+@Html.PagedListPager(Model, page=>
+Url.Action("Productos",new { page}),new PagedListRenderOptions {
+    Display = X.PagedList.Web.Common.PagedListDisplayMode.IfNeeded,
+    MaximumPageNumbersToDisplay = 15,
+    LiElementClasses = new String[] { "page-item"},
+    PageClasses = new String[] {"page-link"}
+})
 
 <table class="table">
     <thead>
